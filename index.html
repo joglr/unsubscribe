@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Unsubscribe from Netflix newsletter</title>
+  </head>
+  <body>
+      <style>
+          * {
+              user-select: none;
+          }
+          body {
+              font-family: "Comic Sans MS";
+          }
+          h1 {
+              color: red;
+          }
+          #dialog__section {
+            color: #ccc; font-size: 70%;
+          }
+      button {
+          background: transparent;
+          border: none;
+          font: inherit;
+          color: inherit;
+          display: inline;
+          padding: 0;
+          transition: color 0s;
+          transition-delay: 1s;
+      }
+      button:hover {
+        color: red;
+      }
+      button:focus {
+          outline: none;
+      }
+      </style>
+    <section id="content">
+      <h1>netflix</h1>
+      please <button id="unsubscribe">unsubscribe</button>
+      if you don't want to receive this newsletter.
+    </section>
+    <dialog id="dialog"> 
+      <p>
+        are you sure?
+      </p>
+      <p>
+        <section id="dialog__section">
+            <p>
+                Press  <button id="dialog__unsubscribe">unsubscribe</button> if you want to not stay unsubscribed.
+            </p> 
+                        <p>
+                            Press 
+                            <button id="dialog__cancel">cancel</button> if you want to stay unsubscribed.
+                        </p>
+        </section>
+      </p>
+      <button id="dialog__ok">ok</button>
+    </dialog>
+  </body>
+</html>
+<script>
+$ = document.querySelector.bind(document);
+$$ = s => [...document.querySelectorAll(s)];
+
+// const unsubscribe = $("#unsubscribe");
+// const dialog = $("dialog");
+// const dialog__ok = $("#dialog__ok");
+// const dialog__cancel = $("#dialog__cancel");
+// const dialog__unsubscribe = $("#dialog__cancel");
+
+const openDialog = () => {
+  dialog.open = true;
+  content.style.visibility = "hidden";
+};
+const closeDialog = () => {
+  dialog.open = false;
+
+  content.style.visibility = "";
+};
+
+unsubscribe.onclick = openDialog;
+
+dialog__ok.onclick = () => {
+  closeDialog();
+  content.textContent = "succesfully subscribed!";
+};
+dialog__cancel.onclick = () => {
+  closeDialog();
+  content.textContent = "succesfully unsubscribed!";
+};
+dialog__unsubscribe.onclick = () => {
+  closeDialog();
+  content.textContent = "succesfully subscribed!";
+};
+
+//   confirm(
+//     `Are you sure you want to unsubscribe?
+// Press OK if you want to stay subscribed`
+//   );
+</script>
+<!-- <script src="index.js"></script> -->
